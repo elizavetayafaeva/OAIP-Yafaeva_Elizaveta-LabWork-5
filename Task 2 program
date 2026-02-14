@@ -1,0 +1,36 @@
+using lab5_var6_task2;
+
+class Program
+{
+    static void Main()
+    {
+        SimpleTimeWithInput t1 = new SimpleTimeWithInput();
+        SimpleTimeWithInput t2 = new SimpleTimeWithInput();
+
+        Console.WriteLine("ВВОД ПЕРВОГО ВРЕМЕНИ:");
+        t1.Read();
+
+        Console.WriteLine("\nВВОД ВТОРОГО ВРЕМЕНИ:");
+        t2.Read();
+
+        Console.WriteLine("\nВВЕЛИ:");
+        Console.Write("Время1: "); t1.Show();
+        Console.Write("Время2: "); t2.Show();
+
+        Console.WriteLine($"\n1. Разница: {t1.DiffSec(t2)} сек");
+
+        Console.Write("\n2. Сколько секунд добавить к времени1? ");
+        t1.AddSec(int.Parse(Console.ReadLine()));
+        Console.Write("   Результат: "); t1.Show();
+
+        Console.Write("\n3. Сколько секунд отнять от времени2? ");
+        t2.SubSec(int.Parse(Console.ReadLine()));
+        Console.Write("   Результат: "); t2.Show();
+
+        Console.WriteLine($"\n4. Сравнение: {t1.CompareTo(t2)}");
+        Console.WriteLine($"5. Время1 в секундах: {t1.ToSec()}");
+        Console.WriteLine($"6. Время1 в минутах: {t1.ToMin()}");
+
+        Console.ReadKey();
+    }
+}
