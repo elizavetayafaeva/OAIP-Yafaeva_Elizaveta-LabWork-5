@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace lab5_var6_Yaf
+{
+
+    public class Product
+    {
+        private int first;
+        private double second;
+        public void Input()
+        {
+            Console.Write("Введите калорийность 100 г продукта: ");
+            while (!int.TryParse(Console.ReadLine(), out first))
+            {
+                Console.Write("Неверный ввод! Введите целое положительное число: ");
+            }
+
+            Console.Write("Введите массу продукта в килограммах: ");
+            while (!double.TryParse(Console.ReadLine(), out second) || second <= 0)
+            {
+                Console.Write("Неверный ввод! Введите вещественное положительное число: ");
+            }
+        }
+
+        public void CalculatePower()
+        {
+            double power = first * (second * 1000) / 100;
+            Console.WriteLine($"Общая калорийность продукта: {power} ккал");
+        }
+    }
+}
+        
+
+        
