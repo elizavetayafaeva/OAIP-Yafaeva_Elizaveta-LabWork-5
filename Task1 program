@@ -1,0 +1,14 @@
+using lab5_var6_Yaf;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Product product = new Product();
+        product.Input();
+        product.CalculatePower();
+
+        Console.ReadKey();
+    }
+}
+    
