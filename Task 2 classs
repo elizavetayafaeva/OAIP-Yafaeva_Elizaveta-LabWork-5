@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace lab5_var6_task2
+{
+    class SimpleTimeWithInput
+    {
+        public int h, m, s;
+
+        // Ввод времени
+        public void Read()
+        {
+            Console.Write("Введите часы: ");
+            h = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите минуты: ");
+            m = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите секунды: ");
+            s = int.Parse(Console.ReadLine());
+
+            Fix();
+        }
+        void Fix()
+        {
+            m += s / 60;
+            s %= 60;
+            h += m / 60;
+            m %= 60;
+            h %= 24;
+        }
+        public int DiffSec(SimpleTimeWithInput t) => Math.Abs((h - t.h) * 3600 + (m - t.m) * 60 + (s - t.s));
+        public void AddSec(int sec)
+        {
+            s += sec; Fix();
+        }
+        public void SubSec(int sec)
+        {
+            int total = h * 3600 + m * 60 + s - sec;
+            if (total < 0) total = 0;
+            h = total / 3600;
+            m = (total % 3600) / 60;
+            s = total % 60; Fix();
+        }
+        public int CompareTo(SimpleTimeWithInput t) => (h == t.h && m == t.m && s == t.s) ? 0 : (h * 3600 + m * 60 + s < t.h * 3600 + t.m * 60 + t.s ? -1 : 1);
+        public int ToSec() => h * 3600 + m * 60 + s;
+        public int ToMin() => (int)Math.Round(h * 60 + m + s / 60.0);
+
+        public void Show() => Console.WriteLine($"{h:00}:{m:00}:{s:00}");
+    }
+
+}
